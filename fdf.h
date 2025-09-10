@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wsm <wsm@student.42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/01 00:00:00 by wsm               #+#    #+#             */
-/*   Updated: 2025/09/08 11:53:49 by wshoweky         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FDF_H
 # define FDF_H
 
@@ -47,10 +35,6 @@
 # define GREEN 0x00FF00
 # define BLUE 0x0000FF
 
-/*
-** 3D point with floating-point coordinates.
-** Used for world and screen positions with precision for smooth transformations.
-*/
 typedef struct s_point
 {
 	float	x;
@@ -58,10 +42,6 @@ typedef struct s_point
 	float	z;
 }	t_point;
 
-/*
-** Wireframe vertex with world/screen coordinates and color.
-** Connects to adjacent vertices to form wireframe lines.
-*/
 typedef struct s_vertex
 {
 	t_point	world;
@@ -69,9 +49,6 @@ typedef struct s_vertex
 	int		color;
 }	t_vertex;
 
-/*
-** 3D map data from FDF file with vertex array and height bounds.
-*/
 typedef struct s_map
 {
 	t_vertex	**vertices;
@@ -81,10 +58,6 @@ typedef struct s_map
 	int			z_max;
 }	t_map;
 
-/*
-** Camera controls: rotation, zoom, offset, and projection type.
-** Float precision ensures smooth visual transitions.
-*/
 typedef struct s_camera
 {
 	float	zoom;
@@ -97,10 +70,6 @@ typedef struct s_camera
 	int		color_mode;
 }	t_camera;
 
-/*
-** Line drawing parameters for DDA algorithm.
-** Float increments ensure smooth line rendering without jagged edges.
-*/
 typedef struct s_line
 {
 	float	x;
@@ -112,9 +81,6 @@ typedef struct s_line
 	int		end_color;
 }	t_line;
 
-/*
-** Main FDF structure containing MLX handles, map data, and camera.
-*/
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
@@ -156,3 +122,4 @@ int		interpolate_color(int start_color, int end_color, float ratio);
 int		get_vertex_color(t_vertex *vertex, t_map *map, int color_mode);
 
 #endif
+
